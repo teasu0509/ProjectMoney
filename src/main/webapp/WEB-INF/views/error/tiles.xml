@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="/errors/sysError404" template="/WEB-INF/views/error/sysError404.jsp" >
+    <put-attribute name="content" value="/WEB-INF/views/error/sysError404.jsp" />
+  </definition>
+
+  <definition name="/errors/sysError500" template="/WEB-INF/views/error/sysError500.jsp" >
+    <put-attribute name="content" value="/WEB-INF/views/error/sysError500.jsp" />
+  </definition>
+
+</tiles-definitions>
