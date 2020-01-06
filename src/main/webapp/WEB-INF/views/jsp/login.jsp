@@ -14,6 +14,8 @@
 
 <link href="resources/css/animate.css" rel="stylesheet">
 <link href="resources/css/style.css" rel="stylesheet">
+<link href="resources/css/local.css" rel="stylesheet">
+
 <!-- Mainly scripts -->
 <script src="resources/js/jquery-2.1.1.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
@@ -22,13 +24,12 @@
 </script>
 </head>
 
-<body class="gray-bg">
+<body class="bg">
 
 	<div class="middle-box text-center loginscreen animated fadeInDown">
 		<div>
-			<h3>~.~</h3>
-			<p>練習 Spring MVC 的網站</p>
-			<p>Login in. To see it in action.</p>
+			<h1 class="logo"><small>Demo</small></h1>
+			<p>Intumit 碩網資訊 &copy; 2019</p>
 			<form class="m-t" role="form" action="login" method="POST"
 				id="login-form" modelAttribute="userFormData">
 				<div class="form-group">
@@ -45,9 +46,6 @@
 				</p>
 				<a class="btn btn-sm btn-white btn-block" href="register.html">建立帳號</a>
 			</form>
-			<p class="m-t">
-				<small>Intumit 碩網資訊 &copy; 2019</small>
-			</p>
 		</div>
 	</div>
 </body>

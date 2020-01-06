@@ -20,6 +20,9 @@
 	function changePage(value) {
 		$("#content").load(value);
 	}
+	function logout() {
+		window.history.back(-1);
+	}
 </script>
 </head>
 <body data-target="#navbar-spy" data-spy="scroll">
@@ -41,7 +44,7 @@
 							class="glyphicon glyphicon-earphone"> 聯絡我們</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>
+					<li><a onclick="logout();"><span class="glyphicon glyphicon-log-out"></span>
 							登出</a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
 							Johnny</a></li>
