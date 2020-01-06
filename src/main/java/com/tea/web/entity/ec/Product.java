@@ -17,51 +17,68 @@ import org.hibernate.annotations.GenericGenerator;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product {
 
-  @GeneratedValue(generator = "uuid2")
-  @GenericGenerator(name = "uuid2", strategy = "uuid2")
-  @Column(columnDefinition = "BINARY(16)")
-  @Id
-  private UUID id;
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(columnDefinition = "BINARY(16)")
+	@Id
+	private UUID id;
 
-  @Column(name = "name", columnDefinition = "nvarchar(255)", nullable = false)
-  private String name;
+	@Column(name = "name", columnDefinition = "nvarchar(255)", nullable = false)
+	private String name;
 
-  @Column(name = "price", nullable = false)
-  private int price;
+	@Column(name = "price", nullable = false)
+	private int price;
 
-  @Column(name = "description", columnDefinition = "nvarchar(255)", nullable = false)
-  private String description;
+	@Column(name = "description", columnDefinition = "nvarchar(255)", nullable = false)
+	private String description;
 
-  public UUID getId() {
-    return id;
-  }
+	public Product() {
+		super();
+	}
 
-  public void setId(UUID id) {
-    this.id = id;
-  }
+	public Product(UUID id, String name, int price, String description) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+	}
 
-  public String getName() {
-    return name;
-  }
+	public UUID getId() {
+		return id;
+	}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+	public void setId(UUID id) {
+		this.id = id;
+	}
 
-  public int getPrice() {
-    return price;
-  }
+	public String getName() {
+		return name;
+	}
 
-  public void setPrice(int price) {
-    this.price = price;
-  }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-  public String getDescription() {
-    return description;
-  }
+	public int getPrice() {
+		return price;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
+	}
 
 }

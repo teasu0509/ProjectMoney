@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.teasu</groupId>
@@ -11,14 +12,14 @@
 		<java.version>1.8</java.version>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<junit.version>4.11</junit.version>
-		<spring.version>4.2.4.RELEASE</spring.version>
-		<spring-data-jpa.version>1.10.6.RELEASE</spring-data-jpa.version>
-		<hibernate.version>4.3.11.Final</hibernate.version>
+		<spring.version>5.2.1.RELEASE</spring.version>
+		<spring-data-jpa.version>2.2.0.RELEASE</spring-data-jpa.version>
+		<hibernate.version>5.4.2.Final</hibernate.version>
 		<hikaricp.version>2.2.5</hikaricp.version>
 		<apachetiles.version>3.0.5</apachetiles.version>
 		<!-- J2EE -->
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-		<taglibs-standard.version>1.2.5</taglibs-standard.version>
+		<taglibs-standard.version>1.2.1</taglibs-standard.version>
 	</properties>
 	<dependencies>
 		<!-- J2EE -->
@@ -64,33 +65,37 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- Apache Tiles -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-core</artifactId>
-			<version>${apachetiles.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-api</artifactId>
-			<version>${apachetiles.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-servlet</artifactId>
-			<version>${apachetiles.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-jsp</artifactId>
-			<version>${apachetiles.version}</version>
-		</dependency>
 		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.62</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>2.0.0-alpha1</version>
 		</dependency>
 	</dependencies>
 	<build>
