@@ -13,7 +13,7 @@
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<junit.version>4.11</junit.version>
 		<spring.version>5.2.1.RELEASE</spring.version>
-		<spring-data-jpa.version>2.2.0.RELEASE</spring-data-jpa.version>
+		<spring-data-jpa.version>2.2.3.RELEASE</spring-data-jpa.version>
 		<hibernate.version>5.4.2.Final</hibernate.version>
 		<hikaricp.version>2.2.5</hikaricp.version>
 		<apachetiles.version>3.0.5</apachetiles.version>
