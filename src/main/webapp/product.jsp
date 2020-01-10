@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +69,7 @@
 					</div>
 				</form>
 				<div class="modal-footer">
-					<button class="btn" onclick="insertProduct();">確認</button>
+					<button class="btn" onclick="insertProduct();">確認</button>				
 					<button class="btn" data-dismiss="modal">取消</button>
 				</div>
 			</div>
@@ -85,7 +87,7 @@
 	var $table = $('#demo')
 			.bootstrapTable(
 					{
-						url : "${home}ec",
+						url : "product/get",
 						dataType : "json",
 						method : 'get',
 						dataField : "data",
@@ -140,13 +142,13 @@
 									align : 'center'
 								},
 								{
-									field : 'description',
-									title : '商品描述',
+									field : 'name',
+									title : '名稱',
 									align : 'center'
 								},
 								{
-									field : 'name',
-									title : '名稱',
+									field : 'description',
+									title : '商品描述',
 									align : 'center'
 								},
 								{
@@ -162,10 +164,12 @@
 									formatter : function(value, row, index) {
 										var a = index;
 										var b = JSON.stringify(row);
-										
+
 										var html = "<button type='button' class='btn btn-primary btn-sm'>詳細資訊</button>&nbsp;&nbsp;";
 										html += "<button type='button' class='btn btn-sm btn-warning'><span class='glyphicon glyphicon-pencil' aria-hidden='true'/>修改</button>&nbsp;&nbsp;";
-										html += "<button type='button' class='btn btn-sm btn-danger' onclick='deleteProductByOne("+b+");'><span class='glyphicon glyphicon-remove' aria-hidden='true'/>刪除</button>&nbsp;&nbsp;";
+										html += "<button type='button' class='btn btn-sm btn-danger' onclick='deleteProductByOne("
+												+ b
+												+ ");'><span class='glyphicon glyphicon-remove' aria-hidden='true'/>刪除</button>&nbsp;&nbsp;";
 										return html;
 									}
 								} ]

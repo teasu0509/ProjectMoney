@@ -16,6 +16,7 @@ import javax.persistence.UniqueConstraint;
 public class User {
 
 	@Id
+	@Column(name="user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 

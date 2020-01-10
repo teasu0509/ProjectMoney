@@ -9,18 +9,15 @@
 <title>INSPINIA | Login</title>
 
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="resources/font-awesome/css/font-awesome.css"
-	rel="stylesheet">
+<link href="resources/font-awesome/css/font-awesome.css" rel="stylesheet">
 
 <link href="resources/css/animate.css" rel="stylesheet">
 <link href="resources/css/style.css" rel="stylesheet">
 <link href="resources/css/local.css" rel="stylesheet">
-
 <!-- Mainly scripts -->
 <script src="resources/js/jquery-2.1.1.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	
 </script>
 </head>
 
@@ -29,7 +26,9 @@
 	<div class="middle-box text-center loginscreen animated fadeInDown">
 		<div>
 			<h1 class="logo"><small>Demo</small></h1>
-			<p>Intumit 碩網資訊 &copy; 2019</p>
+			<p>
+				Magic 神奇資訊 &copy; 2020
+			</p>
 			<form class="m-t" role="form" action="login" method="POST"
 				id="login-form" modelAttribute="userFormData">
 				<div class="form-group">
@@ -45,7 +44,7 @@
 					<small>忘記密碼?</small>
 				</p>
 				<a class="btn btn-sm btn-white btn-block" href="register.html">建立帳號</a>
-			</form>
+			</form>		
 		</div>
 	</div>
 </body>

@@ -22,13 +22,13 @@ public class ProductController {
 	@Autowired
 	private ProductRepository repo;
 
-	@RequestMapping(value = { "/ec" }, method = RequestMethod.GET)
-	public @ResponseBody Object getPageInfo() {
+	@RequestMapping(value = { "/product/get" }, method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	public @ResponseBody Object getProduct() {
 //		// 用來建立初始資料使用
 //		Product product = new Product();
-//		product.setName("A產品");
-//		product.setPrice(1);
-//		product.setDescription("A產品說明");
+//		product.setName("productA");
+//		product.setPrice(1600);
+//		product.setDescription("productA's info");
 //		repo.save(product);
 
 		List<Product> findAll = repo.findAll();
@@ -38,7 +38,7 @@ public class ProductController {
 	}
 
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = { "/insert" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/product/insert" }, method = RequestMethod.POST)
 	public void insert(@ModelAttribute("insertForm") Product product) {
 		System.out.print("OK");
 		System.out.print("OK");

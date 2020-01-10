@@ -8,4 +8,6 @@ import com.tea.web.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	User findByUsernameAndPassword(String username, String password);
+
+	User findById(int id);
 }
