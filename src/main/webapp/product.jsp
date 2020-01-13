@@ -28,7 +28,7 @@
 <body>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title text-center">商品資訊</h3>
+			<h3 class="panel-title text-center">商品管理</h3>
 		</div>
 		<div class="panel-body">
 			<div id="toolbar">
