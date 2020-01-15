@@ -10,6 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.tea.web.service.ProductService;
+import com.tea.web.service.ProductServiceImpl;
+
 @Configuration
 @ComponentScan(basePackages = { "com.tea.web" })
 @EnableWebMvc
@@ -30,4 +33,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		return viewResolver;
 	}
 
+	// Product(商品)service
+	@Bean
+	public ProductService productService() {
+		return new ProductServiceImpl();
+	}
 }

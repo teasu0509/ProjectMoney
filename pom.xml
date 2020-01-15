@@ -17,6 +17,8 @@
 		<hibernate.version>5.4.2.Final</hibernate.version>
 		<hikaricp.version>2.2.5</hikaricp.version>
 		<apachetiles.version>3.0.5</apachetiles.version>
+		<logback.version>1.1.3</logback.version>
+		<jcl.slf4j.version>1.7.12</jcl.slf4j.version>
 		<!-- J2EE -->
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
 		<taglibs-standard.version>1.2.1</taglibs-standard.version>
@@ -102,6 +104,18 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>2.0.0-alpha1</version>
+		</dependency>
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${jcl.slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

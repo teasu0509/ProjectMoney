@@ -121,7 +121,7 @@
 							<li><a onclick="changePage('product.jsp');">&nbsp;&nbsp;&nbsp;<i
 									class="glyphicon glyphicon-credit-card"></i> 商品管理
 							</a></li>
-							<li><a href="#">&nbsp;&nbsp;&nbsp;<i
+							<li><a onclick="changePage('report.jsp');">&nbsp;&nbsp;&nbsp;<i
 									class="glyphicon glyphicon-file"></i> 報表管理
 							</a></li>
 							<li><a href="#">&nbsp;&nbsp;&nbsp;<i
