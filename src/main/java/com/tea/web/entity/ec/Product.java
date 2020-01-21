@@ -28,9 +28,14 @@ public class Product {
 
 	@Column(name = "price", nullable = false)
 	private int price;
+	
+	@Column(name = "fettle", nullable = false)
+    private int fettle;
 
 	@Column(name = "description", columnDefinition = "nvarchar(255)", nullable = false)
 	private String description;
+	
+	
 
 	public Product() {
 		super();
@@ -76,9 +81,19 @@ public class Product {
 		this.description = description;
 	}
 
-	@Override
+	
+	
+	public int getFettle() {
+        return fettle;
+    }
+
+    public void setFettle(int fettle) {
+        this.fettle = fettle;
+    }
+
+    @Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description +",fettle="+fettle + "]";
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.tea.web.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,9 +20,22 @@ public class ProductServiceImpl implements ProductService {
 //		product.setPrice(500);
 //		product.setDescription("好玩的玩具");
 //		repo.save(product);
-		
-		List<Product> list = repo.findAll();
-		return list;
+	    
+	    
+		return repo.findAll();
 	}
+	
+	@Override
+	public List<Product> findAllById(Iterable<UUID> ids){
+	    return repo.findAllById(ids);
+	}
+
+    @Override
+    public void save(Product product) {
+        repo.save(product);
+    }
+
+
+    
 
 }
