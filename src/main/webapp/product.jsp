@@ -13,6 +13,7 @@
 			url : "product/insert",
 			data : str,
 			success : function(data) {
+				$("#ooo").modal('hide');
 		      $('#demo').bootstrapTable('refresh');
 		      
 			},
@@ -28,31 +29,41 @@
 	
 	
 	function reviseProduct() {
-        var str = $("#reviseForm").serialize();
-        $.ajax({
-            type : "post",
-            url : "product/revise",
-            data : str,
-            success : function(data) {
-              $('#demo').bootstrapTable('refresh');
-            },
-            error : function(hqXHR) {
-                alert(hqXHR.status);
-            }
-        });
+		var price = $('#showPrice').val();
+		   if(!isNaN(price))
+		   {
+			   var str = $("#reviseForm").serialize();
+		         $.ajax({
+		             type : "post",
+		             url : "product/revise",
+		             data : str,
+		             success : function(data) {
+		                 $("#ccc").modal('hide');
+		               $('#demo').bootstrapTable('refresh');
+		             },
+		             error : function(hqXHR) {
+		                 alert(hqXHR.status);
+		             }
+		         });
+		   }
+		   if(isNaN(price))
+           {
+			   alert('請勿在價格欄位輸入數字以外的內容!');
+           }
+		   
     }
 	
 	function deleteProduct() {
-        var str = $("#deleteForm").serialize();
-        var deletestr = $("#deleteIdForm").serialize();
-        deletestr =  deletestr.slice(deletestr.indexOf('=')+1)
-        if(str.slice(str.indexOf('=')+1).toLowerCase() == 'delete'){
+        var str = $('#DeleteCheck').val();
+        var deletestr = $('#deleteshowId').val();
+        if(str == 'delete'){
         	 $.ajax({
                  type: "post",
                  url: "product/delete",
                  data: {"datas": deletestr},
                      success : function(data) {
                          alert("刪除成功");
+                         $("#deleteModal").modal('hide');
                          $('#demo').bootstrapTable('refresh');
                      },
                      error : function(hqXHR) {
@@ -61,6 +72,11 @@
                  });
         }
     }
+	
+
+	
+	
+	
 </script>
 </head>
 <body>
@@ -94,12 +110,13 @@
 					</button>
 					<div class="modal-title ">新增商品</div>
 				</div>
-				<form modelAttribute="insertForm" method="post" id="insertForm">
+				<form  modelAttribute="insertForm" method="post" id="insertForm">
 					<div class="modal-body">
 						<div class="col-md-5">
 							<td><input class="form-control" placeholder="名稱"
 								required="true" name="name"></td>
 						</div>
+
 						<div class="col-md-2">
 							<td><input class="form-control" placeholder="價格"
 								required="true" name="price"></td>
@@ -139,13 +156,16 @@
                         </div>
                         <input type=hidden class="form-control" placeholder="ccc"
                                 required="true" name="id" class="form-control" id="showId" value="">
+                                       
                         <div class="col-md-2">
                             <td><input class="form-control" placeholder="ccc"
-                                required="true" name="price" class="form-control" id="showDescription" value=""></td>
+                                required="true" name="price" class="form-control" id="showPrice" value=""></td>
+                       
                         </div>
+                                       
                         <div class="col-md-5">
                             <td><input class="form-control" placeholder="說cc明"
-                                required="true" name="description" class="form-control" id="showPrice" value=""></td>
+                                required="true" name="description" class="form-control" id="showDescription" value=""></td>
                         </div>
       
                     </div>
@@ -170,19 +190,14 @@
                     </button>
                     <div class="modal-title ">刪除確認</div>
                 </div>
-                 <form modelAttribute="deleteForm" method="post" id="deleteIdForm">
                 <input type=hidden class="form-control" placeholder="ccc"
                     required="true" name="id" class="form-control" id="deleteshowId" value="">
-                    </form>  
-                <form modelAttribute="deleteForm" method="post" id="deleteForm">
                     <div class="modal-body">
                         <div class="col-md-5">
                             <td><input class="form-control" placeholder="請輸入delete，並且點擊刪除"
                                 required="true" name="DeleteCheck" class="form-control" id="DeleteCheck" value=""></td>
                         </div>
-      
                     </div>
-                </form>
                 <div class="modal-footer">
                     <button class="btn" onclick="deleteProduct();">刪除</button>              
                     <button class="btn" data-dismiss="modal">取消</button>
@@ -297,14 +312,14 @@
 									align : 'center'
 								},
 								{
-									field : 'description',
-									title : '商品描述',
-									align : 'center'
+									field : 'price',
+                                    title : '價格',
+                                    align : 'center'
 								},
 								{
-									field : 'price',
-									title : '價格',
-									align : 'center'
+									field : 'description',
+                                    title : '商品描述',
+                                    align : 'center'
 								},
 								{
 									field : 'operation',
@@ -351,8 +366,14 @@
 	
 	 //批次刪除，獲取checkbox選中的值-------------------------------------
 	  $('#btn1').click(function() {
-		  $("#deleteAllModal").modal('toggle');
-                      });
+		  if($table.bootstrapTable('getSelections') != ''){
+               $("#deleteAllModal").modal('toggle');
+         }
+		  if($table.bootstrapTable('getSelections') == ''){
+			  alert("請勾選刪除項目!"); 
+          }
+		  
+                                   });
 	
 	  $('#deleteAllModal').on('show.bs.modal', function (event) {
 		  var result = $table.bootstrapTable('getSelections');
@@ -383,15 +404,16 @@
       }
           var deletestr = $("#deleteAllForm").serialize();
             deletestr =  deletestr.slice(deletestr.indexOf('=')+1)
-            console.log(deletestr);
+            
             if(deletestr.slice(deletestr.indexOf('=')+1).toLowerCase() == 'delete'){
-                console.log('ajaxgo');
+               
                 $.ajax({
                     type: "post",
                     url: "product/delete",
                     data: {"datas": ids.join()},
                         success : function(data) {
                             alert("刪除成功");
+                            $("#deleteAllModal").modal('hide');
                             $('#demo').bootstrapTable('refresh');
                             
                         },

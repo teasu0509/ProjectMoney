@@ -90,7 +90,7 @@ public class ProductController {
 	         try {
 	             for(int i = 0 ; i < ids.size(); i++) {
 	                Product product = new Product();
-	                product = productService.findAllById(Arrays.asList(UUID.fromString(ids.get(i)))).get(i);
+	                product = productService.findAllById(Arrays.asList(UUID.fromString(ids.get(i)))).get(0);
 	             // 刪除商品，改為1為廢棄狀態。
 	                product.setFettle(1);
 	                productService.save(product);
