@@ -41,12 +41,35 @@ public class CalendarController {
 
 		try {
 			User user = repo1.findById(1);
-			Gson g=  new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+			Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'").create();
 			Calendar calendar = g.fromJson(string, Calendar.class);
 			calendar.setUser(user);
 //			System.out.print(calendar.getStart());
 //			System.out.print(calendar.getEnd());
 			repo2.save(calendar);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	@ResponseStatus(value = HttpStatus.OK)
+	@RequestMapping(value = { "/calendar/update" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	public void update(@RequestBody String string) {
+
+		try {
+			Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss:SSS'Z'").create();
+			Calendar calendar = g.fromJson(string, Calendar.class);
+			repo2.saveAndFlush(calendar);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	@ResponseStatus(value = HttpStatus.OK)
+	@RequestMapping(value = { "/calendar/delete" })
+	public void delete(int id) {
+		try {
+			repo2.deleteById(id);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

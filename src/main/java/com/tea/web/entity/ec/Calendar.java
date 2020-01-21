@@ -1,6 +1,6 @@
 package com.tea.web.entity.ec;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import com.tea.web.entity.User;
 
 @Entity
-@Table(name = "TeaSchedule")
+@Table(name = "TeaCalendar")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Calendar {
 	@Id
@@ -36,6 +36,9 @@ public class Calendar {
 
 	@Column(name = "endTime", columnDefinition = "datetime", nullable = false)
 	private Date end;
+
+	@Column(name = "allDay", nullable = false)
+	private boolean allDay;
 
 	public int getId() {
 		return id;
@@ -79,6 +82,14 @@ public class Calendar {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public boolean isAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(boolean allDay) {
+		this.allDay = allDay;
 	}
 
 }

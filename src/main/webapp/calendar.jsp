@@ -1,5 +1,4 @@
-<%@ page language="java" import="java.util.*"
-	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,25 +7,78 @@
 	function deleteEvent() {
 		var id = document.getElementById("event_id").value;
 		$('#calendar').fullCalendar('removeEvents', id);
+
+		$.ajax({
+			url : "calendar/delete?id=" + id,
+			type : "POST",
+			datatype : "json",
+			data : {},
+			contentType : "application/json; charset=utf-8;",
+			success : function() {
+				alert("OK");
+			},
+			error : function() {
+				alert("NO OK");
+			}
+		});
 	}
-	//新增event到資料庫
-	function addEvent(id, title, start, end) {
-		
-		var a = {
+	//新增event
+	function addEvent(id, title, start, end, type) {
+		var event = {
 			id : id,
 			title : title,
 			start : new Date(start),
 			end : new Date(end)
 		};
+
+		if (type == "month") {//若於月份模式新增事件則allDay欄位必須為true不然在切換（日/周）時候會佔全版面而不是在all-day上面顯示
+			event.allDay = true;
+		}
+
 		$.ajax({
 			url : "calendar/insert",
 			type : "POST",
 			datatype : "json",
-			data : JSON.stringify(a),
+			data : JSON.stringify(event),
 			async : false,
 			contentType : "application/json; charset=utf-8;",
 			success : function() {
 
+			},
+			error : function() {
+
+			}
+		});
+	}
+	//修改event
+	function updateEvent() {
+		var event = {};
+		var id = document.getElementById("event_id").value;
+		var allDay = document.getElementById("event_allDay").value;
+		var title = document.getElementById("title").value;
+		var description = document.getElementById("description").value;
+		var start = document.getElementById("start").value;
+		var end = document.getElementById("end").value;
+
+		event.id = id;
+		event.title = title;
+		event.description = description;
+		event.start = new Date(start);
+		event.end = new Date(end);
+		if (allDay == "true") {//若於月份模式修改事件需判斷event的allDay是否為true|false，再進行修改不然會出錯
+			event.allDay = true;
+		}
+
+		$.ajax({
+			url : "calendar/update",
+			type : "POST",
+			datatype : "json",
+			data : JSON.stringify(event),
+			async : false,
+			contentType : "application/json; charset=utf-8;",
+			success : function() {
+				$("#calendar").fullCalendar('refetchEvents');
+				$("#ooo").modal('hide');
 			},
 			error : function() {
 
@@ -68,7 +120,8 @@
 				<div class="rhui-window" id="editCalendarWin">
 					<div class="rhui-panel-body">
 						<!-- 日程id -->
-						<input class="rhui-field" type="hidden" id="event_id" />
+						<input class="rhui-field" type="hidden" id="event_id" /> <input
+							class="rhui-field" type="hidden" id="event_allDay" />
 						<table style="margin-left: 25px;">
 							<tr>
 								<td class="field-label" align="right">標題：</td>
@@ -91,7 +144,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button class="btn">確認</button>
+					<button class="btn" onclick="updateEvent();">確認</button>
 					<button class="btn" data-dismiss="modal">取消</button>
 					<button class="btn" data-dismiss="modal" onclick="deleteEvent();">刪除行程</button>
 				</div>
@@ -132,18 +185,27 @@
 						eventSources : [ {//資料來源
 							url : 'calendar/get'
 						} ],
-						select : function(start, end, allDay) {//點選日曆空白地方要新增事件時觸發
+						eventMouseover : function(event, jsEvent, view) {
+							if (view.name == "month") {
+								$(jsEvent.target).attr('title', event.title);
+							}
+							$(this).css('backgroundColor', '#80bfff');
+						},
+						eventMouseout : function(event, jsEvent, view) {
+							$(this).css('backgroundColor', '#2567b3');
+						},
+						select : function(start, end, allDay, view) {//點選日曆空白地方要新增事件時觸發
 							var title = prompt('請輸入事件:');
-							id = Math.floor(Math.random() * 999999999);//產生亂數id
+							var type = view.name;//判斷使用者在那個模式下新增事件（月｜周日）
+							id = Math.floor(Math.random() * 999999999);//產生亂數id							
 							if (title) {
 								$("#calendar").fullCalendar('renderEvent', {
 									id : id,
 									title : title,
 									start : start,
-									end : end,
-									allDay : allDay
+									end : end
 								}, true);
-								addEvent(id, title, start, end);//新增事件至日曆
+								addEvent(id, title, start, end, type);//新增事件至日曆
 							}
 							$("#calendar").fullCalendar('unselect');
 						},
@@ -151,12 +213,13 @@
 							//開啟修改視窗
 							$("#ooo").modal('show');
 							$("#event_id").val(info.id);
+							$("#event_allDay").val(info.allDay);
 							$("#title").val(info.title);
 							$("#description").val(info.description);
 							$("#start").val(info.start);
 							$("#end").val(info.end);
 						},
-						eventDrop : function (info) {//拖移事件處發動動作
+						eventDrop : function(info) {//拖移事件處發動動作
 							addEvent(info.id, info.title, info.start, info.end);
 						}
 					});
