@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "ecProducts")
+@Table(name = "TeaProducts")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product {
 
@@ -28,14 +28,12 @@ public class Product {
 
 	@Column(name = "price", nullable = false)
 	private int price;
-	
-	@Column(name = "fettle", nullable = false)
-    private int fettle;
+
+	@Column(name = "status", nullable = false) // 狀態1為移除資料,0為存在資料
+	private int status;
 
 	@Column(name = "description", columnDefinition = "nvarchar(255)", nullable = false)
 	private String description;
-	
-	
 
 	public Product() {
 		super();
@@ -81,19 +79,18 @@ public class Product {
 		this.description = description;
 	}
 
-	
-	
-	public int getFettle() {
-        return fettle;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public void setFettle(int fettle) {
-        this.fettle = fettle;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    @Override
+	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description +",fettle="+fettle + "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", description=" + description + ",status="
+				+ status + "]";
 	}
 
 }

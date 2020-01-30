@@ -6,8 +6,12 @@ import java.util.UUID;
 import com.tea.web.entity.ec.Product;
 
 public interface ProductService {
-	 List<Product> findAll();
- void save(Product product);
-    List<Product> findAllById(Iterable<UUID> ids);
+	List<Product> findAll();
+
+	List<Product> findByStatus(int status);
 	
+	void save(Product product);
+
+	List<Product> findAllById(Iterable<UUID> ids);
+
 }

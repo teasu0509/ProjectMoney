@@ -11,7 +11,7 @@ import com.tea.web.repository.ProductRepository;
 public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository repo;
-	
+
 	@Override
 	public List<Product> findAll() {
 //		// 用來建立初始資料使用
@@ -20,22 +20,23 @@ public class ProductServiceImpl implements ProductService {
 //		product.setPrice(500);
 //		product.setDescription("好玩的玩具");
 //		repo.save(product);
-	    
-	    
+
 		return repo.findAll();
 	}
-	
+
 	@Override
-	public List<Product> findAllById(Iterable<UUID> ids){
-	    return repo.findAllById(ids);
+	public List<Product> findByStatus(int status) {
+		// TODO Auto-generated method stub
+		return repo.findByStatus(status);
 	}
 
-    @Override
-    public void save(Product product) {
-        repo.save(product);
-    }
+	@Override
+	public List<Product> findAllById(Iterable<UUID> ids) {
+		return repo.findAllById(ids);
+	}
 
-
-    
-
+	@Override
+	public void save(Product product) {
+		repo.save(product);
+	}
 }

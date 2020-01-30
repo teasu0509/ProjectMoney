@@ -1,5 +1,6 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"  pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*"
+	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -7,22 +8,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>測試管理系統</title>
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+<link href="resources/css/bootstrap-datetimepicker.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 
 <script src="resources/js/jquery-2.1.1.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 
-<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/locale/bootstrap-table-zh-CN.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
+<script
+	src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+<script
+	src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+<script
+	src="https://unpkg.com/bootstrap-table@1.15.5/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script
+	src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
 <!-- Moment.js v2.20.0 -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.0/moment.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.0/moment.min.js"></script>
 <!-- FullCalendar v3.8.1 -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.print.css" rel="stylesheet" media="print">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.min.css"
+	rel="stylesheet" />
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.8.1/fullcalendar.print.css"
+	rel="stylesheet" media="print">
 <script src="resources/js/calendar.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+<script src="resources/js/bootstrap-datetimepicker.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"
+	type="text/javascript"></script>
 <script type="text/javascript">
 	//切換頁面
 	function changePage(value) {
@@ -32,7 +47,6 @@
 	function logout() {
 		window.history.back(-1);
 	}
-	
 </script>
 <style>
 @media ( max-width : 767.98px) {
@@ -144,8 +158,29 @@
 				</ul>
 			</div>
 			<!-- 渲染頁面 -->
-			<div class="col-md-10">
-				<div class="starter-template" id="content"></div>
+			<div class="col-md-10 col-sm-6">
+				<div class="starter-template" id="content">
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">公告欄</h3>
+							</div>
+							<div class="panel-body">
+								<marquee direction="left" behavior="slide" scrollamount="10" id="">
+									<a href="#">預計2020年01月20更版，屆時敬啟期待全新功能!</a>
+								</marquee>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title text-center">待辦事項</h3>
+							</div>
+							<div class="panel-body">test</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

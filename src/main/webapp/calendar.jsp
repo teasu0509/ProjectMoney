@@ -60,6 +60,10 @@
 		var start = document.getElementById("start").value;
 		var end = document.getElementById("end").value;
 
+		if ($("#mark").prop("checked")) {
+			event.color = "orange";
+		}
+
 		event.id = id;
 		event.title = title;
 		event.description = description;
@@ -77,8 +81,9 @@
 			async : false,
 			contentType : "application/json; charset=utf-8;",
 			success : function() {
-				$("#calendar").fullCalendar('refetchEvents');
 				$("#ooo").modal('hide');
+				$('#calendar').fullCalendar('removeEvents', id);
+				$("#calendar").fullCalendar('refetchEvents');
 			},
 			error : function() {
 
@@ -93,6 +98,9 @@
 	margin-bottom: 50px;
 	margin-left: 15px;
 	margin-right: 15px;
+}
+.fc-widget-header{
+    background-color:#d1d1e0;
 }
 </style>
 </head>
@@ -122,31 +130,57 @@
 						<!-- 日程id -->
 						<input class="rhui-field" type="hidden" id="event_id" /> <input
 							class="rhui-field" type="hidden" id="event_allDay" />
+
 						<table style="margin-left: 25px;">
 							<tr>
 								<td class="field-label" align="right">標題：</td>
-								<td><input class="rhui-field" id="title" type="text" /></td>
+								<td><input class="rhui-field" id="title"
+									style="width: 500px;" type="text" /></td>
 							</tr>
 							<tr>
-								<td class="field-label" align="right">內容：</td>
+								<td class="field-label" align="right" valign="top">內容：</td>
 								<td><textarea class="rhui-field" id="description"
-										style="height: 100px; width: 500px;"></textarea></td>
+										style="height: 150px; width: 500px; resize: none;"></textarea></td>
 							</tr>
 							<tr>
 								<td class="field-label">開始時間：</td>
-								<td><input class="rhui-field" id="start" type='text' /></td>
+								<td>
+									<div class='input-group date' id='datetimepicker5'>
+										<input type='text' class="form-control" style="width: 300px;"
+											id="start" /> <span class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</td>
 							</tr>
 							<tr>
 								<td class="field-label">結束時間：</td>
-								<td><input class="rhui-field" id="end" type="text" /></td>
+								<td>
+									<div class='input-group date' id='datetimepicker6'>
+										<input type='text' class="form-control" style="width: 300px;"
+											id="end" /> <span class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field-label"></td>
+								<td><input type="checkbox" id="mark"> 是否為重要事件</td>
 							</tr>
 						</table>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button class="btn" onclick="updateEvent();">確認</button>
-					<button class="btn" data-dismiss="modal">取消</button>
-					<button class="btn" data-dismiss="modal" onclick="deleteEvent();">刪除行程</button>
+					<button class="btn" onclick="updateEvent();">
+						<i class="glyphicon glyphicon-ok"></i> 確認
+					</button>
+					<button class="btn" data-dismiss="modal">
+						<i class="glyphicon glyphicon-remove"></i> 取消
+					</button>
+					<button class="btn" data-dismiss="modal" onclick="deleteEvent();">
+						<i class="glyphicon glyphicon-trash"></i> 取消行程
+					</button>
 				</div>
 			</div>
 		</div>
@@ -154,6 +188,17 @@
 	<!-- end 修改日程視窗 -->
 </body>
 <script>
+	//初始化日期選擇器--------------------------------
+	$('#datetimepicker5').datetimepicker({
+		defaultDate: new Date(),
+		stepping: 30,
+		sideBySide: true
+	});
+	$('#datetimepicker6').datetimepicker({
+		defaultDate: new Date(),
+		stepping: 30,
+		sideBySide: true
+	});
 	//初始化日曆-------------------------------------
 	$("#calendar")
 			.fullCalendar(
@@ -192,7 +237,11 @@
 							$(this).css('backgroundColor', '#80bfff');
 						},
 						eventMouseout : function(event, jsEvent, view) {
-							$(this).css('backgroundColor', '#2567b3');
+							if (event.color != null) {
+								$(this).css('backgroundColor', event.color);
+							} else {
+								$(this).css('backgroundColor', '#2567b3');
+							}
 						},
 						select : function(start, end, allDay, view) {//點選日曆空白地方要新增事件時觸發
 							var title = prompt('請輸入事件:');
@@ -218,6 +267,11 @@
 							$("#description").val(info.description);
 							$("#start").val(info.start);
 							$("#end").val(info.end);
+							if (info.color == 'orange') {
+								$('#mark').prop('checked', true);
+							} else {
+								$('#mark').prop('checked', false);
+							}
 						},
 						eventDrop : function(info) {//拖移事件處發動動作
 							addEvent(info.id, info.title, info.start, info.end);

@@ -40,6 +40,9 @@ public class Calendar {
 	@Column(name = "allDay", nullable = false)
 	private boolean allDay;
 
+	@Column(name = "color", columnDefinition = "nvarchar(50)", nullable = true)
+	private String color;
+
 	public int getId() {
 		return id;
 	}
@@ -90,6 +93,14 @@ public class Calendar {
 
 	public void setAllDay(boolean allDay) {
 		this.allDay = allDay;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 }
