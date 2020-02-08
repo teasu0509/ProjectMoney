@@ -2,10 +2,9 @@
 
 1.於tomcat/server.xml下增加一行  
 
-    <Context path="/report" docBase="/Users/houzunyan/git/report" />
+    <Context path="/report" docBase="本地端路徑" />
 
- path可自定義名稱
- docBase為本機端路徑，自行修改。
+ path可自定義名稱，docBase為本機端路徑，可自行修改。
  
 2.於tomcat/web.xml將listings預設值false改為true
 
