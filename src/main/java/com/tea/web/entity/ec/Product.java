@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "TeaProducts")
+@Table(name = "Products")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product {
 
@@ -23,29 +23,17 @@ public class Product {
   @Id
   private UUID id;
 
-  @Column(name = "name", nullable = false)
+  @Column(nullable = false)
   private String name;
 
-  @Column(name = "price", nullable = false)
-  private int price;
+  @Column(nullable = false)
+  private double price;
 
-  @Column(name = "status", nullable = false) // 狀態1為移除資料,0為存在資料
+  @Column(nullable = false) // 狀態1為移除資料,0為存在資料
   private int status;
 
   @Column(name = "description", nullable = false)
   private String description;
-
-  public Product() {
-    super();
-  }
-
-  public Product(UUID id, String name, int price, String description) {
-    super();
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.description = description;
-  }
 
   public UUID getId() {
     return id;
@@ -63,11 +51,11 @@ public class Product {
     this.name = name;
   }
 
-  public int getPrice() {
+  public double getPrice() {
     return price;
   }
 
-  public void setPrice(int price) {
+  public void setPrice(double price) {
     this.price = price;
   }
 

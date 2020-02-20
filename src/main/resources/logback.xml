@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <logger name="org.springframework" level="ERROR"/>
-    <logger name="tea.web" level="INFO"/>
+    <logger name="com.tea.web" level="DEBUG"/>
 
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -11,7 +11,7 @@
     </appender>
 
     <root>
-        <level value="INFO" />
+        <level value="DEBUG" />
         <appender-ref ref="consoleAppender" />
     </root>
 </configuration>

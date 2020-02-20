@@ -14,5 +14,4 @@
     </init-param>
         
 3.於webapp/WEB-INF下建立lib資料夾並將下列jar檔案放到裡面
-  >sqljdbc4.jar
   >fonts.jar

@@ -14,19 +14,19 @@ import com.tea.web.repository.UserRepository;
 @Controller
 public class LoginController {
 
-	@Autowired
-	private UserRepository repo;
+  @Autowired
+  private UserRepository repo;
 
-	@RequestMapping(value = "/login")
-	public String login(@ModelAttribute("userFormData") User user) {
-		try {
-			User result = repo.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-			List<User> result2 = repo.findAll(Example.of(user));
-			
-		} catch (Exception e) {
-			System.out.print(e);
-		}
-		return "home";
-	}
+  @RequestMapping(value = "/login")
+  public String login(@ModelAttribute("userFormData") User user) {
+    try {
+      User result = repo.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+      List<User> result2 = repo.findAll(Example.of(user));
+
+    } catch (Exception e) {
+      System.out.print(e);
+    }
+    return "home";
+  }
 
 }
