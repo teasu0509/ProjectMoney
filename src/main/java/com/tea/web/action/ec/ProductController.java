@@ -1,6 +1,5 @@
 package com.tea.web.action.ec;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,7 +28,7 @@ public class ProductController {
   @Autowired
   private ProductService productService;
 
-  @GetMapping(value = { "/get", "/" }, produces = "application/json; charset=utf-8")
+  @GetMapping(value = { "/get", "/", "" }, produces = "application/json; charset=utf-8")
   public @ResponseBody Object getProduct() {
     logger.debug("call getProduct");
     String jsonString = null;
@@ -75,7 +74,7 @@ public class ProductController {
   public void delete(@RequestParam("datas") List<String> ids) {
     try {
       for (int i = 0; i < ids.size(); i++) {
-        Product product = productService.findAllById(Arrays.asList(UUID.fromString(ids.get(i)))).get(0);
+        Product product = productService.getOne(UUID.fromString(ids.get(i)));
         // 刪除商品，改為1為廢棄狀態。
         product.setStatus(1);
         productService.save(product);
