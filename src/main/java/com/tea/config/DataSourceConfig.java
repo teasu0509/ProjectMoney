@@ -12,26 +12,26 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 public class DataSourceConfig {
 
-	@Value("${db.driver}")
-	private String driver;
+  @Value("${db.driver}")
+  private String driver;
 
-	@Value("${db.url}")
-	private String url;
+  @Value("${db.url}")
+  private String url;
 
-	@Value("${db.username}")
-	private String username;
+  @Value("${db.username}")
+  private String username;
 
-	@Value("${db.password}")
-	private String password;
+  @Value("${db.password}")
+  private String password;
 
-	@Bean(destroyMethod = "close")
-	DataSource dataSource() {
-		HikariConfig dataSourceConfig = new HikariConfig();
-		dataSourceConfig.setDriverClassName(driver);
-		dataSourceConfig.setJdbcUrl(url);
-		dataSourceConfig.setUsername(username);
-		dataSourceConfig.setPassword(password);
-		return new HikariDataSource(dataSourceConfig);
-	}
+  @Bean(destroyMethod = "close")
+  DataSource dataSource() {
+    HikariConfig dataSourceConfig = new HikariConfig();
+    dataSourceConfig.setDriverClassName(driver);
+    dataSourceConfig.setJdbcUrl(url);
+    dataSourceConfig.setUsername(username);
+    dataSourceConfig.setPassword(password);
+    return new HikariDataSource(dataSourceConfig);
+  }
 
 }

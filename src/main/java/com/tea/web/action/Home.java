@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Home {
 
-	@RequestMapping("/")
-	public String getPage() {
-		return "login";
-	}
+  @RequestMapping("/")
+  public String getPage() {
+    return "login";
+  }
 }
