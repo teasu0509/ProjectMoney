@@ -297,7 +297,8 @@
 								{
 									field : 'id',
 									title : 'ID',
-									align : 'center'
+									align : 'center',
+									visible : false
 								},
 								{
 									field : 'name',
