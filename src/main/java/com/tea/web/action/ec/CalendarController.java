@@ -20,6 +20,7 @@ import com.tea.web.repository.CalendarRepository;
 import com.tea.web.repository.UserRepository;
 
 @Controller
+@RequestMapping(value = "/calendar")
 public class CalendarController {
 
 	@Autowired
@@ -27,7 +28,7 @@ public class CalendarController {
 	@Autowired
 	private CalendarRepository repo2;
 
-	@RequestMapping(value = { "/calendar/get" }, method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = { "/get", "/", "" }, method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public @ResponseBody Object get() {
 		List<Calendar> findAll = repo2.findAll();
 
@@ -36,7 +37,7 @@ public class CalendarController {
 	}
 
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = { "/calendar/insert" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = { "/insert" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public void insert(@RequestBody String string) {
 
 		try {
@@ -53,7 +54,7 @@ public class CalendarController {
 	}
 
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = { "/calendar/update" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@RequestMapping(value = { "/update" }, method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public void update(@RequestBody String string) {
 
 		try {
@@ -66,7 +67,7 @@ public class CalendarController {
 	}
 
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = { "/calendar/delete" })
+	@RequestMapping(value = { "/delete" })
 	public void delete(int id) {
 		try {
 			repo2.deleteById(id);
