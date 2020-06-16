@@ -72,7 +72,7 @@
 		if (allDay == "true") {//若於月份模式修改事件需判斷event的allDay是否為true|false，再進行修改不然會出錯
 			event.allDay = true;
 		}
-
+		
 		$.ajax({
 			url : "calendar/update",
 			type : "POST",
@@ -203,6 +203,7 @@
 	$("#calendar")
 			.fullCalendar(
 					{
+						timezone:"local",
 						header : {
 							left : 'title',
 							center : 'agendaDay,agendaWeek,month',
@@ -267,6 +268,8 @@
 							$("#description").val(info.description);
 							$("#start").val(info.start);
 							$("#end").val(info.end);
+							$('#datetimepicker5').data("DateTimePicker").date(new Date(info.start));
+							$('#datetimepicker6').data("DateTimePicker").date(new Date(info.end));
 							if (info.color == 'orange') {
 								$('#mark').prop('checked', true);
 							} else {
