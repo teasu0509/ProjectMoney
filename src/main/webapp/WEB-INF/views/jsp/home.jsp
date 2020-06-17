@@ -29,6 +29,7 @@
 <script src="resources/js/calendar.js"></script>
 <script src="resources/js/bootstrap-datetimepicker.min.js"></script>
 <script src="resources/js/jquery-ui.min.js"></script>
+<script src="resources/ckeditor/ckeditor.js"></script>
 <!-- local -->
 <script src="resources/js/local.js"></script>
 
@@ -162,5 +163,6 @@
 	<a href="#" id="gotop">
     <i class="fa fa-angle-up"></i>
     </a>
+    
 </body>
 </html>
