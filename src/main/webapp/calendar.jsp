@@ -123,8 +123,9 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span>&times;</span>
 					</button>
-					<div class="modal-title ">修改行程</div>
+					<div class="modal-title">修改行程</div>
 				</div>
+				<br>
 				<div class="rhui-window" id="editCalendarWin">
 					<div class="rhui-panel-body">
 						<!-- 日程id -->
@@ -134,12 +135,12 @@
 						<table style="margin-left: 25px;">
 							<tr>
 								<td class="field-label" align="right">標題：</td>
-								<td><input class="rhui-field" id="title"
+								<td><input class="form-control" id="title"
 									style="width: 500px;" type="text" /></td>
 							</tr>
 							<tr>
 								<td class="field-label" align="right" valign="top">內容：</td>
-								<td><textarea class="rhui-field" id="description"
+								<td><textarea class="form-control" id="description"
 										style="height: 150px; width: 500px; resize: none;"></textarea></td>
 							</tr>
 							<tr>
@@ -169,6 +170,7 @@
 								<td><input type="checkbox" id="mark"> 是否為重要事件</td>
 							</tr>
 						</table>
+						<br>
 					</div>
 				</div>
 				<div class="modal-footer">

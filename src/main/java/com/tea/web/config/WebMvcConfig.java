@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -40,7 +41,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * ¥[¤JSPRINGÄdºI¾¹
+	 * ï¿½[ï¿½JSPRINGï¿½dï¿½Iï¿½ï¿½
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -48,7 +49,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * i18n °ê»Ú¤Æ(¥i§ïÅÜ°Ï°ì)
+	 * i18n ï¿½ï¿½Ú¤ï¿½(ï¿½iï¿½ï¿½ï¿½Ü°Ï°ï¿½)
 	 * 
 	 * @return HandlerInterceptor
 	 */
@@ -60,7 +61,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * i18n¤å¥ó©ñ¸m¦ì¸m
+	 * i18nï¿½ï¿½ï¿½ï¿½mï¿½ï¿½m
 	 * 
 	 * @return MessageSource
 	 */
@@ -75,7 +76,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * °Ï°ì¸ÑªR¾¹
+	 * ï¿½Ï°ï¿½ÑªRï¿½ï¿½
 	 * 
 	 * @return LocaleResolver
 	 */
@@ -85,4 +86,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		sessionLocaleResolver.setDefaultLocale(Locale.TAIWAN);
 		return sessionLocaleResolver;
 	}
+
+	/**
+	 * file upload setting
+	 * 
+	 */
+	@Bean("multipartResolver")
+	public CommonsMultipartResolver commonsMultipartResolver() {
+		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+		return commonsMultipartResolver;
+	}
+
 }

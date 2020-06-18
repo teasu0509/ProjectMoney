@@ -120,6 +120,9 @@
 							<li><a onclick="changePage('calendar.jsp');">&nbsp;&nbsp;&nbsp;<i
 									class="glyphicon glyphicon-calendar"></i> 行程管理
 							</a></li>
+							<li><a onclick="changePage('document.jsp');">&nbsp;&nbsp;&nbsp;<i
+									class="glyphicon glyphicon-folder-close"></i> 文件管理
+							</a></li>
 						</ul></li>
 
 					<li><a href="#"> <i class="glyphicon glyphicon-globe"></i>
@@ -161,7 +164,7 @@
 		</div>
 	</div>
 	<a href="#" id="gotop">
-    <i class="fa fa-angle-up"></i>
+    <i class="glyphicon glyphicon-menu-up"></i>
     </a>
     
 </body>
