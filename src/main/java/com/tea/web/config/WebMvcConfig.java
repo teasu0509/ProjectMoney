@@ -27,7 +27,6 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableScheduling
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
-	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
@@ -96,8 +95,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Bean("multipartResolver")
 	public CommonsMultipartResolver commonsMultipartResolver() {
 		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
-		commonsMultipartResolver.setMaxUploadSize(20971520);
-		commonsMultipartResolver.setMaxUploadSizePerFile(5242880);
+		commonsMultipartResolver.setMaxUploadSize(2048000000);
 		commonsMultipartResolver.setMaxInMemorySize(1048576);
 		return commonsMultipartResolver;
 	}

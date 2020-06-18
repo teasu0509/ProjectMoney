@@ -20,9 +20,8 @@ public class DocumentController {
 	private static final Logger logger = LoggerFactory.getLogger(DocumentController.class);
 
 	@ResponseStatus(value = HttpStatus.OK)
-	@ResponseBody
 	@PostMapping("/upload")
-	public String uploadCommons(@RequestPart("file") MultipartFile file) {
+	public @ResponseBody String uploadCommons(@RequestPart("file") MultipartFile file) {
 		logger.debug("---Run Upload Commons---");
 		uploadFileUtil.uploadFile(file);
 		return "success";
