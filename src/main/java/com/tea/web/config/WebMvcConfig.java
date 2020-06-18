@@ -2,6 +2,7 @@ package com.tea.web.config;
 
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,6 +27,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableScheduling
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
@@ -41,7 +43,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * �[�JSPRING�d�I��
+	 * 加入SPRING攔截器
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -49,7 +51,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * i18n ��ڤ�(�i���ܰϰ�)
+	 * i18n 國際化(可改變區域)
 	 * 
 	 * @return HandlerInterceptor
 	 */
@@ -61,7 +63,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * i18n����m��m
+	 * i18n文件放置位置
 	 * 
 	 * @return MessageSource
 	 */
@@ -76,7 +78,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 	/**
-	 * �ϰ�ѪR��
+	 * 區域解析器
 	 * 
 	 * @return LocaleResolver
 	 */
@@ -94,6 +96,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Bean("multipartResolver")
 	public CommonsMultipartResolver commonsMultipartResolver() {
 		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+		commonsMultipartResolver.setMaxUploadSize(20971520);
+		commonsMultipartResolver.setMaxUploadSizePerFile(5242880);
+		commonsMultipartResolver.setMaxInMemorySize(1048576);
 		return commonsMultipartResolver;
 	}
 
