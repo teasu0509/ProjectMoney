@@ -17,10 +17,14 @@
 			contentType : false, // jQuery預設contentType為'application/x-www-form-urlencoded; charset=UTF-8', 且不用自己設定為'multipart/form-data'
 			dataType : 'text',
 			success : function(data) {
-				console.log(data);
+				$("#successMessageDialog").fadeIn("slow", function() {
+					// Animation complete.
+				});
 			},
 			error : function() {
-				console.log("NO");
+				$("#faildMessageDialog").fadeIn("slow", function() {
+					// Animation complete.
+				});
 			}
 		});
 	}
@@ -37,7 +41,8 @@
 			<form id="uploadForm">
 				<td><input class="form-control" type="file" name="file"
 					id="file" /></td> <br>
-				<td><input type="button" value="上傳檔案" onclick="upload();"></input></td>
+				<td><input type="button" value="上傳檔案" class="btn btn-primary"
+					onclick="upload();"></input></td>
 
 			</form>
 		</div>
@@ -46,5 +51,34 @@
 						style="color: #e74c3c">&nbsp;&nbsp;&nbsp;※上傳檔案目前暫存位置為D曹的tmp資料夾下</span></span></em>
 			</p></td>
 	</div>
+	<div class="alert alert-success" style="display: none"
+		id="successMessageDialog">
+		<strong>檔案上傳成功!</strong>
+		<button type="button" class="close" id="sucessCloseButton">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="alert alert-danger" style="display: none"
+		id="faildMessageDialog">
+		<strong>檔案上傳失敗!</strong>
+		<button type="button" class="close" id="faildCloseButton">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<script type="text/javascript">
+		//檔案上傳成功視窗
+		$("#sucessCloseButton").click(function() {
+			$("#successMessageDialog").fadeOut("slow", function() {
+				// Animation complete.
+			});
+		});
+		//檔案上傳失敗視窗
+		$("#faildCloseButton").click(function() {
+			$("#faildMessageDialog").fadeOut("slow", function() {
+				// Animation complete.
+			});
+		});
+	</script>
 </body>
 </html>
