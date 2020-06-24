@@ -29,22 +29,84 @@
 		});
 	}
 </script>
+<style>
+#relative {
+	position: relative;
+}
+
+#successMessageDialog {
+	position: absolute;
+	top: 150px;
+	right: 0;
+	width: 400px;
+	height: 50px;
+}
+
+#faildMessageDialog {
+	position: absolute;
+	top: 120px;
+	right: 0;
+	width: 300px;
+	height: 50px;
+}
+</style>
 <meta charset="BIG5">
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="panel panel-default">
+	<div class="panel panel-default" id="relative">
 		<div class="panel-heading">
 			<h3 class="panel-title text-center">文件管理</h3>
 		</div>
 		<div class="panel-body">
-			<form id="uploadForm">
-				<td><input class="form-control" type="file" name="file"
-					id="file" /></td> <br>
+			<div class="input-group">
+				<span class="input-group-addon">標題:</span> <input type="text"
+					class="form-control" placeholder="請填寫文件標題">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon">內容:</span>
+				<textarea name="editor1"></textarea>
+				<script>
+					CKEDITOR.replace("editor1");
+				</script>
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon">有效期限:</span>
+				<div class="custom-control custom-radio">
+					&nbsp;&nbsp; <input type="radio" class="custom-control-input"
+						id="defaultUnchecked" name="defaultExampleRadios"> <label
+						class="custom-control-label" for="defaultUnchecked">1年</label>
+
+					&nbsp;&nbsp; <input type="radio" class="custom-control-input"
+						id="defaultUnchecked" name="defaultExampleRadios"> <label
+						class="custom-control-label" for="defaultUnchecked">2年</label>
+
+					&nbsp;&nbsp; <input type="radio" class="custom-control-input"
+						id="defaultUnchecked" name="defaultExampleRadios"> <label
+						class="custom-control-label" for="defaultUnchecked">3年</label>
+
+					&nbsp;&nbsp; <input type="radio" class="custom-control-input"
+						id="defaultUnchecked" name="defaultExampleRadios"> <label
+						class="custom-control-label" for="defaultUnchecked">永久</label>
+				</div>
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon">附加檔案:</span>
+				<div>
+					<form id="uploadForm">
+						<td><input class="form-control" type="file" name="file"
+							id="file" /></td> <br>
+					</form>
+				</div>
+			</div>
+			<br>
+			<div>
 				<td><input type="button" value="上傳檔案" class="btn btn-primary"
 					onclick="upload();"></input></td>
-
-			</form>
+			</div>
 		</div>
 		<td><p>
 				<em><span style="font-size: 8px"><span

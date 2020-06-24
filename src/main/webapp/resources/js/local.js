@@ -8,7 +8,7 @@
 	    
 	    /* 偵測卷軸滑動時，往下滑超過400px就讓GoTop按鈕出現 */
 	    $(window).scroll(function() {
-	        if ( $(this).scrollTop() > 400){
+	        if ( $(this).scrollTop() > 10){
 	            $('#gotop').fadeIn();
 	        } else {
 	            $('#gotop').fadeOut();
