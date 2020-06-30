@@ -22,8 +22,12 @@ public class DocumentController {
 	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping("/upload")
 	public @ResponseBody String uploadCommons(@RequestPart("file") MultipartFile file) {
-		logger.debug("---Run Upload Commons---");
-		uploadFileUtil.uploadFile(file);
+		try {
+			logger.info("檔案上傳成功!");
+			uploadFileUtil.uploadFile(file);
+		} catch (Exception e) {
+			logger.error("檔案上傳失敗");
+		}
 		return "success";
 	}
 }
