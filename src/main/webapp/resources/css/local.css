@@ -15,6 +15,24 @@ body, html {
 	background-size: cover;
 }
 
+.sidenav {
+	height: 100%;
+	border-radius: 5px;
+	background-color: #000000;
+}
+
+.sidenav a {
+	text-decoration: none;
+	font-size: 15px;
+	color: #F5F5F5;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #000000;
+}
+
 @media ( max-width : 767.98px) {
 	body {
 		font-size: 12px;

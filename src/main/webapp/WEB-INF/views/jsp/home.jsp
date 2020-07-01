@@ -74,11 +74,9 @@
 	<br>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-2" style="height: auto; overflow-y: scroll;">
+			<div class="col-md-2" style="height: auto; ">
+			   <div class="sidenav">
 				<ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
-					<li class="active"><a href="#"> <i
-							class="glyphicon glyphicon-th-large"></i> <spring:message code="title.side.main" />
-					</a></li>
 					<li><a href="#systemSetting" class="nav-header collapsed"
 						data-toggle="collapse"> <i class="glyphicon glyphicon-cog"></i>
 							<spring:message code="title.side.system.management" /> <span class="pull-right glyphicon glyphicon-chevron-down"></span>
@@ -131,10 +129,11 @@
 					<li><a href="#"> <i class="glyphicon glyphicon-calendar"></i>
 							圖表統計
 					</a></li>
-					<li><a href="#"> <i class="glyphicon glyphicon-info-sign"></i>
+					<li><a onclick="changePage('systemInfo.jsp');"> <i class="glyphicon glyphicon-info-sign"></i>
 							關於系統
 					</a></li>
 				</ul>
+				</div>
 			</div>
 			<!-- 渲染頁面 -->
 			<div class="col-md-10 col-sm-6">
