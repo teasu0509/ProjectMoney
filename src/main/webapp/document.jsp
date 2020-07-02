@@ -30,10 +30,6 @@
 	}
 </script>
 <style>
-#relative {
-	position: relative;
-}
-
 #successMessageDialog {
 	position: absolute;
 	top: 150px;
@@ -54,7 +50,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="panel panel-default" id="relative">
+	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title text-center">文件管理</h3>
 		</div>

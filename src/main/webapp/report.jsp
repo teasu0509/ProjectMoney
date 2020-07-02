@@ -32,7 +32,7 @@
 					<tr>
 						<td width="10%" align="right"><label class="mr-sm-2"
 							for="inlineFormCustomSelect">類型:&nbsp;&nbsp;</label></td>
-						<td width="70%"><select class="custom-select mr-sm-2"
+						<td width="50%"><select class="form-control"
 							id="inlineFormCustomSelect">
 								<option selected>&nbsp;&nbsp;&nbsp;--請選擇--&nbsp;&nbsp;&nbsp;</option>
 								<option value="1">&nbsp;&nbsp;水果</option>
@@ -44,7 +44,7 @@
 					<tr>
 						<td width="10%" align="right"><label class="mr-sm-2"
 							for="inlineFormCustomSelect">產地:&nbsp;&nbsp;</label></td>
-						<td width="70%"><select class="custom-select mr-sm-2"
+						<td width="50%"><select class="form-control"
 							id="inlineFormCustomSelect">
 								<option selected>&nbsp;&nbsp;&nbsp;--請選擇--&nbsp;&nbsp;&nbsp;</option>
 								<option value="1">&nbsp;&nbsp;台北</option>

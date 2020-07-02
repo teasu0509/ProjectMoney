@@ -33,6 +33,19 @@ body, html {
 	color: #000000;
 }
 
+#relative {
+	position: relative;
+}
+
+#loadingDiv {
+	position: absolute;
+	display: none;
+	border-radius: 2px;
+	width: auto;
+	margin: 0px auto;
+	background-color: gray;
+}
+
 @media ( max-width : 767.98px) {
 	body {
 		font-size: 12px;

@@ -13,7 +13,8 @@
 <link href="resources/css/bootstrap-table.min.css" rel="stylesheet">
 <!-- FullCalendar v3.8.1 -->
 <link href="resources/css/fullcalendar.min.css" rel="stylesheet">
-<link href="resources/css/fullcalendar.print.css" rel="stylesheet" media="print">	
+<link href="resources/css/fullcalendar.print.css" rel="stylesheet"
+	media="print">
 <!-- local -->
 <link href="resources/css/local.css" rel="stylesheet">
 
@@ -36,7 +37,10 @@
 <script type="text/javascript">
 	//切換頁面
 	function changePage(value) {
-		$("#content").load(value);
+		$('#loadingDiv').show();
+		$("#content").fadeOut(0).fadeIn().load(value, function() {
+			$('#loadingDiv').fadeOut();
+		});
 	}
 	//登出
 	function logout() {
@@ -44,7 +48,8 @@
 	}
 </script>
 </head>
-<body data-target="#navbar-spy" data-spy="scroll">
+
+<body data-target="#navbar-spy" data-spy="scroll" id="relative">
 	<nav class="nav navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -53,18 +58,22 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><spring:message code="title.main" /></a>
+				<a class="navbar-brand" href="#"><spring:message
+						code="title.main" /></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li><a data-toggle="tab" onclick="changePage('homePage.jsp');"><span
-							class="glyphicon glyphicon-home"></span> <spring:message code="title.home" /></a></li>
+							class="glyphicon glyphicon-home"></span> <spring:message
+								code="title.home" /></a></li>
 					<li><a data-toggle="tab" onclick="changePage('contact.jsp');"><span
-							class="glyphicon glyphicon-earphone"> <spring:message code="title.contact" /></a></li>
+							class="glyphicon glyphicon-earphone"> <spring:message
+									code="title.contact" /></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a onclick="logout();"><span
-							class="glyphicon glyphicon-log-out"></span> <spring:message code="title.logout" /></a></li>
+							class="glyphicon glyphicon-log-out"></span> <spring:message
+								code="title.logout" /></a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
 							Johnny</a></li>
 				</ul>
@@ -74,69 +83,73 @@
 	<br>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-2" style="height: auto; ">
-			   <div class="sidenav">
-				<ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
-					<li><a href="#systemSetting" class="nav-header collapsed"
-						data-toggle="collapse"> <i class="glyphicon glyphicon-cog"></i>
-							<spring:message code="title.side.system.management" /> <span class="pull-right glyphicon glyphicon-chevron-down"></span>
-					</a>
-						<ul id="systemSetting" class="nav nav-list collapse secondmenu"
-							style="height: 0px;">
-							<li class="active"><a onclick="changePage('user.jsp');">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-user"></i> <spring:message code="title.side.user.management" />
-							</a></li>
-							<li><a href="#">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-th-list"></i> 選單管理
-							</a></li>
-							<li><a href="#">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-asterisk"></i> 角色管理
-							</a></li>
-							<li><a href="#">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-edit"></i> 修改密碼
-							</a></li>
-							<li><a href="#">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-eye-open"></i> 日誌檢視
-							</a></li>
-						</ul></li>
+			<div class="col-md-2" style="height: auto;">
+				<div class="sidenav">
+					<ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+						<li><a href="#systemSetting" class="nav-header collapsed"
+							data-toggle="collapse"> <i class="glyphicon glyphicon-cog"></i>
+								<spring:message code="title.side.system.management" /> <span
+								class="pull-right glyphicon glyphicon-chevron-down"></span>
+						</a>
+							<ul id="systemSetting" class="nav nav-list collapse secondmenu"
+								style="height: 0px;">
+								<li class="active"><a onclick="changePage('user.jsp');">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-user"></i> <spring:message
+											code="title.side.user.management" />
+								</a></li>
+								<li><a href="#">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-th-list"></i> 選單管理
+								</a></li>
+								<li><a href="#">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-asterisk"></i> 角色管理
+								</a></li>
+								<li><a href="#">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-edit"></i> 修改密碼
+								</a></li>
+								<li><a href="#">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-eye-open"></i> 日誌檢視
+								</a></li>
+							</ul></li>
 
-					<li><a href="#taskSetting" class="nav-header collapsed"
-						data-toggle="collapse"> <i class="glyphicon glyphicon-cog"></i>
-							工作管理 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
-					</a>
-						<ul id="taskSetting" class="nav nav-list collapse secondmenu"
-							style="height: 0px;">
-							<li><a onclick="changePage('product.jsp');">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-credit-card"></i> 商品管理
-							</a></li>
-							<li><a onclick="changePage('report.jsp');">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-file"></i> 報表管理
-							</a></li>
-							<li><a href="#">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-tasks"></i> 排程管理
-							</a></li>
-							<li><a onclick="changePage('calendar.jsp');">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-calendar"></i> 行程管理
-							</a></li>
-							<li><a onclick="changePage('document.jsp');">&nbsp;&nbsp;&nbsp;<i
-									class="glyphicon glyphicon-folder-close"></i> 文件管理
-							</a></li>
-						</ul></li>
+						<li><a href="#taskSetting" class="nav-header collapsed"
+							data-toggle="collapse"> <i class="glyphicon glyphicon-pencil"></i>
+								工作管理 <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+						</a>
+							<ul id="taskSetting" class="nav nav-list collapse secondmenu"
+								style="height: 0px;">
+								<li><a onclick="changePage('product.jsp');">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-credit-card"></i> 商品管理
+								</a></li>
+								<li><a onclick="changePage('report.jsp');">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-file"></i> 報表管理
+								</a></li>
+								<li><a href="#">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-tasks"></i> 排程管理
+								</a></li>
+								<li><a onclick="changePage('calendar.jsp');">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-calendar"></i> 行程管理
+								</a></li>
+								<li><a onclick="changePage('document.jsp');">&nbsp;&nbsp;&nbsp;<i
+										class="glyphicon glyphicon-folder-close"></i> 文件管理
+								</a></li>
+							</ul></li>
 
-					<li><a href="#"> <i class="glyphicon glyphicon-globe"></i>
-							物流配置 <span class="label label-warning pull-right">12</span>
-					</a></li>
-					<li><a href="#"> <i class="glyphicon glyphicon-calendar"></i>
-							圖表統計
-					</a></li>
-					<li><a onclick="changePage('systemInfo.jsp');"> <i class="glyphicon glyphicon-info-sign"></i>
-							關於系統
-					</a></li>
-				</ul>
+						<li><a href="#"> <i class="glyphicon glyphicon-globe"></i>
+								物流配置 <span class="label label-warning pull-right">12</span>
+						</a></li>
+						<li><a href="#"> <i class="glyphicon glyphicon-calendar"></i>
+								圖表統計
+						</a></li>
+						<li><a onclick="changePage('systemInfo.jsp');"> <i
+								class="glyphicon glyphicon-info-sign"></i> 關於系統
+						</a></li>
+					</ul>
 				</div>
 			</div>
 			<!-- 渲染頁面 -->
 			<div class="col-md-10 col-sm-6">
+				<div id='loadingDiv'>正在載入頁面資料...</div>
+				<div class="loader-inner ball-pulse"></div>
 				<div class="starter-template" id="content">
 					<div class="col-md-6">
 						<div class="panel panel-default">
@@ -144,7 +157,8 @@
 								<h3 class="panel-title text-center">公告欄</h3>
 							</div>
 							<div class="panel-body">
-								<marquee direction="left" behavior="slide" scrollamount="10" id="">
+								<marquee direction="left" behavior="slide" scrollamount="10"
+									id="">
 									<a href="#">預計2020年01月20更版，屆時敬啟期待全新功能!</a>
 								</marquee>
 							</div>
@@ -162,9 +176,7 @@
 			</div>
 		</div>
 	</div>
-	<a href="#" id="gotop">
-    <i class="glyphicon glyphicon-menu-up"></i>
-    </a>
-    
+	<a href="#" id="gotop"> <i class="glyphicon glyphicon-menu-up"></i>
+	</a>
 </body>
 </html>
